@@ -6,8 +6,8 @@ import streamlit.components.v1 as components
 # ==========================================
 # ⚙️ CONFIGURACIÓN DE PÁGINA (AMBIENTE ZEN)
 # ==========================================
-# Cambié el icono por una plantita 🌱 y el título
-st.set_page_config(page_title="Quantum Herbal", page_icon="🌱", layout="wide")
+# Cambié el icono por una plantita 🧠 y el título
+st.set_page_config(page_title="Quantum Mind", page_icon="🧠", layout="wide")
 
 # ==========================================
 # 🔐 1. LOGIN (Igual que la otra App)
@@ -15,7 +15,7 @@ st.set_page_config(page_title="Quantum Herbal", page_icon="🌱", layout="wide")
 if "usuario_activo" not in st.session_state: st.session_state.usuario_activo = None
 
 if not st.session_state.usuario_activo:
-    st.markdown("## 🔐 Quantum Herbal")
+    st.markdown("## 🔐 Quantum Mind")
     # Animación diferente (más calmada si quieres, o la misma)
     try: st.components.v1.iframe("https://my.spline.design/claritystream-Vcf5uaN9MQgIR4VGFA5iU6Es/", height=400)
     except: pass
