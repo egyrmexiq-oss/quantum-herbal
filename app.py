@@ -172,5 +172,21 @@ if prompt := st.chat_input("Cuéntame cómo te sientes..."):
         # Usamos el modelo rápido 2.5 o Pro
         res = genai.GenerativeModel('gemini-2.5-flash').generate_content(full_prompt)
         st.session_state.mensajes.append({"role": "assistant", "content": res.text})
+          # 3. Respuesta
+    with st.chat_message("assistant"):
+        with st.spinner("Procesando..."):
+            try:
+                res = model.generate_content(f"{instruccion} Usuario dice: '{prompt_user}'")
+                texto_ia = res.text
+                st.markdown(texto_ia)
+                
+                audio_bytes = None
+                if es_audio:
+                    audio_bytes = generar_audio_gtts(texto_ia)
+                    if audio_bytes: st.audio(audio_bytes, format="audio/mp3", autoplay=True)
+                
+                msg = {"role": "assistant", "content": texto_ia}
+                if audio_bytes: msg["audio"] = audio_bytes
+                st.session_state.mensajes.append(msg)
         st.rerun()
     except Exception as e: st.error(f"Error de conexión: {e}")
