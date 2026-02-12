@@ -3,6 +3,7 @@ import google.generativeai as genai
 import pandas as pd
 import streamlit.components.v1 as components
 import utils_voz as voz # <--- AGREGA ESTO
+import time
 
 # ==========================================
 # ⚙️ CONFIGURACIÓN DE PÁGINA (AMBIENTE ZEN)
