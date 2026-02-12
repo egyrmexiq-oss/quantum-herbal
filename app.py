@@ -1,8 +1,11 @@
 import streamlit as st
 import google.generativeai as genai
+import speech_recognition as sr
+from gtts import gTTS
+from io import BytesIO
 import pandas as pd
 import streamlit.components.v1 as components
-
+import time
 # ==========================================
 # ⚙️ CONFIGURACIÓN DE PÁGINA (AMBIENTE ZEN)
 # ==========================================
