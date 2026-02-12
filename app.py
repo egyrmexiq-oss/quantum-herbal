@@ -149,6 +149,26 @@ with st.sidebar:
     st.link_button("📝 Soy Psicólogo/a", URL_FORMULARIO)
 
 # ==========================================
+# 🔊 4. MOTORES DE AUDIO
+# ==========================================
+def generar_audio_gtts(texto):
+    try:
+        tts = gTTS(text=texto, lang='es')
+        fp = BytesIO()
+        tts.write_to_fp(fp)
+        return fp.getvalue()
+    except: return None
+
+def transcribir_google(audio_widget):
+    if not audio_widget: return None
+    r = sr.Recognizer()
+    try:
+        with sr.AudioFile(audio_widget) as source:
+            r.adjust_for_ambient_noise(source)
+            return r.recognize_google(r.record(source), language="es-MX")
+    except: return None
+
+# ==========================================
 # 💬 4. CHAT TERAPÉUTICO
 # ==========================================
 
